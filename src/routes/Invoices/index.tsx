@@ -1,12 +1,11 @@
-import { Link } from "react-router-dom";
-import {getInvoices} from "../../data.ts";
+import { Link, Outlet } from "react-router-dom";
+import { getInvoices } from "../../data.ts";
 
 export default function Invoices() {
+  // eslint-disable-next-line prefer-const
+  let invoices = getInvoices();
 
-    // eslint-disable-next-line prefer-const
-    let invoices = getInvoices();
-
-    return (
+  return (
     <div style={{ display: "flex" }}>
       <nav
         style={{
@@ -24,5 +23,7 @@ export default function Invoices() {
           </Link>
         ))}
       </nav>
-    </div>)
+      <Outlet/>
+    </div>
+  );
 }
