@@ -1,6 +1,6 @@
-import {Link, Outlet} from "react-router-dom";
+import {NavLink, Outlet} from "react-router-dom";
 import {getInvoices} from "../../data.ts";
-
+import "./styles.css"
 export default function Invoices() {
     // eslint-disable-next-line prefer-const
     let invoices = getInvoices();
@@ -9,13 +9,13 @@ export default function Invoices() {
         <div style={{display: "flex"}}>
             <nav style={{borderRight: "solid 1px", padding: "1rem"}}>
                 {invoices.map((invoice) => (
-                    <Link
-                        style={{display: "block", margin: "1rem 0"}}
+                    <NavLink
+                        className={({isActive}) => isActive ? " dblock nav-red" : " dblock nav-blue"}
                         to={`/invoices/${invoice.number}`}
                         key={invoice.number}
                     >
                         {invoice.name}
-                    </Link>
+                    </NavLink>
                 ))}
             </nav>
             <Outlet/>

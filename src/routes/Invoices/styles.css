@@ -1,0 +1,15 @@
+.nav-red {
+    color: red;
+    font-weight: bold;
+
+}
+.nav-blue{
+    color: blue;
+    font-weight: bold;
+}
+
+.dblock{
+    display: block;
+    margin: 1rem 0;
+
+}
