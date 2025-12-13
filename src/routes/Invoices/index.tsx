@@ -1,29 +1,24 @@
-import { Link, Outlet } from "react-router-dom";
-import { getInvoices } from "../../data.ts";
+import {Link, Outlet} from "react-router-dom";
+import {getInvoices} from "../../data.ts";
 
 export default function Invoices() {
-  // eslint-disable-next-line prefer-const
-  let invoices = getInvoices();
+    // eslint-disable-next-line prefer-const
+    let invoices = getInvoices();
 
-  return (
-    <div style={{ display: "flex" }}>
-      <nav
-        style={{
-          borderRight: "solid 1px",
-          padding: "1rem",
-        }}
-      >
-        {invoices.map((invoice) => (
-          <Link
-            style={{ display: "block", margin: "1rem 0" }}
-            to={`/invoices/${invoice.number}`}
-            key={invoice.number}
-          >
-            {invoice.name}
-          </Link>
-        ))}
-      </nav>
-      <Outlet/>
-    </div>
-  );
+    return (
+        <div style={{display: "flex"}}>
+            <nav style={{borderRight: "solid 1px", padding: "1rem"}}>
+                {invoices.map((invoice) => (
+                    <Link
+                        style={{display: "block", margin: "1rem 0"}}
+                        to={`/invoices/${invoice.number}`}
+                        key={invoice.number}
+                    >
+                        {invoice.name}
+                    </Link>
+                ))}
+            </nav>
+            <Outlet/>
+        </div>
+    );
 }
