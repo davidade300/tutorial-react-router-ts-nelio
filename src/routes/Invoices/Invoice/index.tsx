@@ -1,10 +1,10 @@
-import { useParams } from "react-router-dom";
-import { getInvoice } from "../../../data";
+/* eslint-disable prefer-const */
+import { useNavigate, useParams } from "react-router-dom";
+import { deleteInvoice, getInvoice } from "../../../data";
 
 export default function Invoice() {
-  // eslint-disable-next-line prefer-const
+  let navigate = useNavigate();
   let params = useParams();
-  // eslint-disable-next-line prefer-const
   let invoice = getInvoice(Number(params.invoiceId));
 
   return (
@@ -16,6 +16,14 @@ export default function Invoice() {
             {invoice.name}: {invoice.number}
           </p>
           <p>Due Date: {invoice.due}</p>
+          <button
+            onClick={() => {
+              deleteInvoice(invoice.number);
+              navigate("/invoices" + location.search);
+            }}
+          >
+            Delete
+          </button>
         </main>
       )}
     </>
